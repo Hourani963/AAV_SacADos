@@ -1,6 +1,7 @@
 package Objets;
 
 
+import Algos.PSE;
 import Algos.ProgDyn;
 import Algos.Gloutonne;
 import Algos.objetsSorter;
@@ -22,6 +23,9 @@ public class SacADos {
     public int getObjetsTous(){
         return objetsTous.size();
     }
+    public double getObjetValByIndice(int indice){
+        return objetsDansSac.get(indice).getValeur();
+    }
     public SacADos(){ // constructeur vide
         this.chemin = "";
         this.poidsSacMax = 0;
@@ -29,6 +33,15 @@ public class SacADos {
         this.objetsDansSac = new ArrayList<>();
         this.Psac = 0;
         this.Vsac = 0;
+    }
+
+    public int getNbrObjetSac(){
+        return objetsDansSac.size();
+    }
+    public void viderSac(){
+        this.Psac = 0 ;
+        this.Vsac = 0;
+        this.objetsDansSac.clear();
     }
     public SacADos(String chemin ,float poidsSacMax){ // constructeur où chemin est l'adresse du fichier contenant les Objets
         this.chemin = chemin;
@@ -117,6 +130,7 @@ public class SacADos {
     }
 
     public void resoudrePSE(){
-
+        PSE pse = new PSE(this, objetsTous);
+        pse.resoudre();
     }
 }
