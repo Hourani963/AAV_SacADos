@@ -115,4 +115,8 @@ public class SacADos {
         ProgDyn progDyn = new ProgDyn(this,objetsTous);
         progDyn.resoudre();
     }
+
+    public void resoudrePSE(){
+
+    }
 }

@@ -14,37 +14,35 @@ public class ProgDyn {
     }
 
     public void resoudre(){
-        int NB_OBJETS = objets.size();
-        int PoidsMaxInt = (int)(sac.getPoidsSacMax());
-        int[][] table = new int[NB_OBJETS][PoidsMaxInt + 1];
+        int nbrObjets = objets.size();
+        int poidSacMax = (int)(sac.getPoidsSacMax());
+        int[][] Matrix = new int[nbrObjets][poidSacMax + 1];
 
-        //On remplit d'abord la première ligne
-        for (int j = 0; j <= PoidsMaxInt; j++) {
+
+        for (int j = 0; j <= poidSacMax; j++) {
             if (objets.get(0).getPoid() > j)
-                table[0][j] = 0;
+                Matrix[0][j] = 0;
             else
-                table[0][j] = (int) objets.get(0).getValeur();
+                Matrix[0][j] = (int) objets.get(0).getValeur();
         }
 
-        //On remplit toutes les autres lignes
-        for(int i = 1; i < NB_OBJETS; ++i) {
-            for (int j = 0; j <= PoidsMaxInt; ++j)
+
+        for(int i = 1; i < nbrObjets; ++i) {
+            for (int j = 0; j <= poidSacMax; ++j)
                 if(objets.get(i).getPoid()  > j)
-                    table[i][j] = table[i - 1][j];
+                    Matrix[i][j] = Matrix[i - 1][j];
                 else
-                    table[i][j] = (int) Math.max(table[i - 1][j],
-                            (table[i-1][(int)((j - (objets.get(i).getPoid() )))]
+                    Matrix[i][j] = (int) Math.max(Matrix[i - 1][j],
+                            (Matrix[i-1][(int)((j - (objets.get(i).getPoid() )))]
                                     + objets.get(i).getValeur()));
         }
 
-
-
-        int i = NB_OBJETS - 1;
-        int j = PoidsMaxInt;
-        while(table[i][j] == table[i][j-1])
+        int i = nbrObjets - 1;
+        int j = poidSacMax;
+        while(Matrix[i][j] == Matrix[i][j-1])
             --j;
         while(j > 0) {
-            while (i > 0 && table[i][j] == table[i - 1][j])
+            while (i > 0 && Matrix[i][j] == Matrix[i - 1][j])
                 --i;
             j = j - (int) (objets.get(i).getPoid());
             if (j >= 0 && j - objets.get(i).getPoid() >=0 )

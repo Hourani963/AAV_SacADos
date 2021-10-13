@@ -13,6 +13,7 @@ public class Appli {
 
         //sac.resoudreGloutonne();
         sac.resoudreProgDynam();
+        //sac.resoudrePSE();
         System.out.println("Valeurs = " + sac.getVsac());
         System.out.println("Poid = " + sac.getPsac());
         System.out.println("Poid Max = " + sac.getPoidsSacMax());
