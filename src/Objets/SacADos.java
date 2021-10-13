@@ -109,7 +109,7 @@ public class SacADos {
 
     }
     public void resoudreProgDynam(){
-        ProgDyn pDyn = new ProgDyn(objetsTous, this);
-        pDyn.solution();
+
+
     }
 }
