@@ -15,7 +15,7 @@ public class Gloutonne {
         this.sacADos = sac;
     }
 
-    public void selection(){ // il y a un problem
+    public void selection(){
         int i = 0;
         do{
             sacADos.setObjets(Objets.get(i));

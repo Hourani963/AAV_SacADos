@@ -8,10 +8,11 @@ public class Appli {
         //String chemin = "C:\\\\Users\\\\UGARIT\\\\Desktop\\\\Ahmad\\\\DUT\\\\A2 S1\\\\AAV\\\\projet\\\\items.txt";
         //String chemin = args[1];
         String chemin = "C:\\Users\\UGARIT\\Desktop\\GIT\\AAV_SacADos\\text\\items.txt";
-        SacADos sac = new SacADos(chemin, 30);
+        SacADos sac = new SacADos(chemin, 6);
         sac.analyseFile();
 
-        sac.resoudreGloutonne();
+        //sac.resoudreGloutonne();
+        sac.resoudreProgDynam();
         System.out.println("Valeurs = " + sac.getVsac());
         System.out.println("Poid = " + sac.getPsac());
         System.out.println("Poid Max = " + sac.getPoidsSacMax());

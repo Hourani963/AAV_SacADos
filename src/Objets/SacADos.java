@@ -19,6 +19,9 @@ public class SacADos {
     private ArrayList<Objet> objetsTous;
     private ArrayList<Objet> objetsDansSac;
 
+    public int getObjetsTous(){
+        return objetsTous.size();
+    }
     public SacADos(){ // constructeur vide
         this.chemin = "";
         this.poidsSacMax = 0;
@@ -106,10 +109,10 @@ public class SacADos {
         Gloutonne glo = new Gloutonne(objetsTous, this);
         objetsTous.sort(new objetsSorter());
         glo.selection();
-
     }
+
     public void resoudreProgDynam(){
-
-
+        ProgDyn progDyn = new ProgDyn(this,objetsTous);
+        progDyn.resoudre();
     }
 }
