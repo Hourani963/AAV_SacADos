@@ -20,8 +20,9 @@ public class Gloutonne {
         do{
             sacADos.setObjets(Objets.get(i));
             i++;
-            if(i == Objets.size()) break;
-        }while (sacADos.getPsac() < sacADos.getPoidsSacMax());
+            if(i == Objets.size() ) break;
+        }while (sacADos.getPsac() < sacADos.getPoidsSacMax() &&
+                sacADos.getPoidsSacMax()-sacADos.getPsac() >= Objets.get(i).getPoid());
     }
 
 }

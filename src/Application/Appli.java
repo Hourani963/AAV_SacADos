@@ -9,15 +9,22 @@ public class Appli {
         //String chemin = args[1];
         String chemin = "C:\\Users\\UGARIT\\Desktop\\GIT\\AAV_SacADos\\text\\items.txt";
         SacADos sac = new SacADos(chemin, 10);
-        sac.analyseFile();
 
-        //sac.resoudreGloutonne();
-        //sac.resoudreProgDynam();
-        sac.resoudrePSE();
+        SacADos sac3 = new SacADos(chemin, 10);
+        sac.analyseFile();
+        sac3.analyseFile();
+
+        sac.resoudreGloutonne();
+        //sac2.resoudreProgDynam();
+        //sac3.resoudrePSE();
         System.out.println("Valeurs = " + sac.getVsac());
         System.out.println("Poid = " + sac.getPsac());
         System.out.println("Poid Max = " + sac.getPoidsSacMax());
 
         System.out.println(sac.toString());
+        System.out.println("Valeurs = " + sac3.getVsac());
+        System.out.println("Poid = " + sac3.getPsac());
+        System.out.println("Poid Max = " + sac3.getPoidsSacMax());
+        System.out.println(sac3.toString());
     }
 }
