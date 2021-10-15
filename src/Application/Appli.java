@@ -2,35 +2,58 @@ package Application;
 
 import Objets.SacADos;
 
+import java.util.Scanner;
+
 public class Appli {
 
     public static void main(String[] args) {
-        //String chemin = "C:\\\\Users\\\\UGARIT\\\\Desktop\\\\Ahmad\\\\DUT\\\\A2 S1\\\\AAV\\\\projet\\\\items.txt";
-        //String chemin = args[1];
-        String chemin = "C:\\Users\\UGARIT\\Desktop\\GIT\\AAV_SacADos\\text\\items.txt";
-        SacADos sac = new SacADos(chemin, 6);
-        SacADos sac2 = new SacADos(chemin, 6);
-        SacADos sac3 = new SacADos(chemin, 6);
-        sac.analyseFile();
-        sac2.analyseFile();
-        sac3.analyseFile();
 
-        sac.resoudreGloutonne();
-        //sac2.resoudreProgDynam();
-        //sac3.resoudrePSE();
-        System.out.println("Valeurs = " + sac.getVsac());
-        System.out.println("Poid = " + sac.getPsac());
-        System.out.println("Poid Max = " + sac.getPoidsSacMax());
-        System.out.println(sac.toString());
 
-        System.out.println("Valeurs = " + sac2.getVsac());
-        System.out.println("Poid = " + sac2.getPsac());
-        System.out.println("Poid Max = " + sac2.getPoidsSacMax());
-        System.out.println(sac2.toString());
 
-        System.out.println("Valeurs = " + sac3.getVsac());
-        System.out.println("Poid = " + sac3.getPsac());
-        System.out.println("Poid Max = " + sac3.getPoidsSacMax());
-        System.out.println(sac3.toString());
+        boolean n = true;
+        while (n){
+            System.out.printf("> ");
+            Scanner sc = new Scanner(System.in);
+            String ligne = sc.nextLine();
+
+            String[] parts = ligne.split(" ");
+            if (parts[0].equals("resoudre") ) {
+                float poid = Float.parseFloat(parts[2]);
+                //String chemin = "C:\\Users\\UGARIT\\Desktop\\GIT\\AAV_SacADos\\text\\items.txt";
+
+                SacADos sac = new SacADos("text\\"+parts[1]+".txt", poid);
+                sac.analyseFile();
+                long startTime = System.currentTimeMillis();
+                switch (parts[3]){
+                    case "gloutonne," :
+                        System.out.println("Méthode -> gloutonne"); sac.resoudreGloutonne(); n=false;
+                        break;
+                    case "dyn" :
+                        System.out.println("Méthode -> dyn");sac.resoudreProgDynam(); n=false;
+                        break;
+                    case "pse" :
+                        System.out.println("Méthode -> pse"); sac.resoudrePSE(); n=false;
+                        break;
+                    default:
+                        System.out.println("pls choose -> gloutonne or dyn or pse");
+                }
+                long endTime   = System.currentTimeMillis();
+                long totalTime = endTime - startTime;
+
+
+                System.out.println("Valeurs = " + sac.getVsac());
+                System.out.println("Poid = " + sac.getPsac());
+                System.out.println("Poid Max = " + sac.getPoidsSacMax()+"\n");
+                System.out.println(sac.toString());
+
+                System.out.println("Temps d'exe " + totalTime + "ms");
+            }
+            else if(parts[0].equals("exit")) n = false;
+
+            else System.out.println("il faut écrire [resoudre-sac-a-dos]" +
+                    "[chemin]"+ "[chemin]" + "[poids-maximal]" + "[methode]"+
+                    "===> write [exit] to stop the program");
+        }
+
     }
 }
