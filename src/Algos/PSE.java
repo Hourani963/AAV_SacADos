@@ -20,12 +20,7 @@ public class PSE {
         objets = objet;
     }
 
-    public void gloResoudre(){
-        sac.resoudreGloutonne();
-        for (int i = 0 ; i < sac.getNbrObjetSac(); i++) {
-            minVal += sac.getObjetValByIndice(i);
-        }
-    }
+
 
     public void resoudre(){
         this.poidsMax = sac.getPoidsSacMax();
