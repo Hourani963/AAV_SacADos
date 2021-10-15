@@ -1,12 +1,8 @@
 package Objets;
 
 
-import Algos.PSE;
-import Algos.ProgDyn;
-import Algos.Gloutonne;
-import Algos.objetsSorter;
+import Algos.*;
 import File.FileOperations;
-import Objets.Objet;
 
 import java.util.ArrayList;
 import java.util.*;
@@ -19,6 +15,9 @@ public class SacADos {
     private String chemin;
     private ArrayList<Objet> objetsTous;
     private ArrayList<Objet> objetsDansSac;
+
+    private float VmaxPSE; // borne SUP PSE
+    private float VminPSE; // borne INFERIEUR PSE
 
     public int getObjetsTous(){
         return objetsTous.size();
@@ -33,11 +32,30 @@ public class SacADos {
         this.objetsDansSac = new ArrayList<>();
         this.Psac = 0;
         this.Vsac = 0;
+
+        this.VmaxPSE = 0;
+        this.VminPSE = 0;
     }
 
     public int getNbrObjetSac(){
         return objetsDansSac.size();
     }
+
+
+    public float getSommeValeurTousObjets(){
+        for (Objet o: objetsTous) {
+            this.VmaxPSE += o.getValeur();
+        }
+        return this.VmaxPSE;
+    }
+    public float getSommeValeurGlotonne(){ // borne inférieur pour l'algo PSE
+        resoudreGloutonne();
+        this.VminPSE = this.Vsac;
+        viderSac();
+        return this.VminPSE;
+    }
+
+
     public void viderSac(){
         this.Psac = 0 ;
         this.Vsac = 0;
@@ -58,25 +76,19 @@ public class SacADos {
     public float getPoidsSacMax(){
         return poidsSacMax;
     }
-    public void setPoidsSacMax(float poidsSacMax){
-        this.poidsSacMax = poidsSacMax;
-    }
+
 
     public float getVsac() {
         return Vsac;
     }
 
-    public void setVsac(float vsac) {
-        Vsac = vsac;
-    }
+
 
     public float getPsac() {
         return Psac;
     }
 
-    public void setPsac(float Psac) {
-        Psac = Psac;
-    }
+
 
     public void setObjets(Objet objet){ // dernière étape
         objetsDansSac.add(objet);
@@ -130,7 +142,8 @@ public class SacADos {
     }
 
     public void resoudrePSE(){
-        PSE pse = new PSE(this, objetsTous);
+        //PSE pse = new PSE(this, objetsTous);
+        PSEOptimisé pse = new PSEOptimisé(this, objetsTous);
         pse.resoudre();
     }
 }
