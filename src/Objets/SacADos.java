@@ -144,6 +144,8 @@ public class SacADos {
     public void resoudrePSE(){
         //PSE pse = new PSE(this, objetsTous);
         PSEOptimisé pse = new PSEOptimisé(this, objetsTous);
+        PSE p = new PSE(this, objetsTous);
+        //p.resoudre();
         pse.resoudre();
     }
 }

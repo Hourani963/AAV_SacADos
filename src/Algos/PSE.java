@@ -20,13 +20,14 @@ public class PSE {
         objets = objet;
     }
 
-
-
     public void resoudre(){
         this.poidsMax = sac.getPoidsSacMax();
         for(Objet o : this.objets)
             maxVal += o.getValeur();
 
+
+        System.out.println("Borne inférieur "+minVal);
+        System.out.println("Borne Supérieur " + maxVal);
         ABR root = new ABR();
         this.meilleurRes = root;
 

@@ -24,16 +24,18 @@ public class PSEOptimisé {
     }
 
     public void resoudre(){
+        this.poidMax = sacADos.getPoidsSacMax();
         this.borneSup = sacADos.getSommeValeurTousObjets();
         this.borneInf = sacADos.getSommeValeurGlotonne();
 
         System.out.println("Borne inférieur "+this.borneInf);
         System.out.println("Borne Supérieur " + this.borneSup);
 
+        SearchTree root = new SearchTree();
         // créer la raçine de l'arbre
-        this.rootTree = new SearchTree();
-        this.bestSolutionTree = rootTree;
-        creeArbreRec(0, rootTree, borneSup);
+
+        this.bestSolutionTree = root;
+        creeArbreRec(0, root, borneSup);
 
         sacADos.viderSac();
         ajouterSolutionRec(this.bestSolutionTree);
