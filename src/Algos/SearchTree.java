@@ -58,6 +58,8 @@ public class SearchTree {
     public boolean isRoot(){
         return this.hauteur==0;
     }
-
+    public int getIndexObjet() {
+        return this.index;
+    }
 
 }
