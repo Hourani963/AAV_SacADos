@@ -17,7 +17,7 @@ public class PSEOptimise {
     private ArrayList<Objet> objets;
     private SacADos sacADos;
 
-    public PSEOptimisé(SacADos sacADos , ArrayList<Objet> objet){
+    public PSEOptimise(SacADos sacADos , ArrayList<Objet> objet){
         this.sacADos = sacADos;
         this.objets = objet;
     }
@@ -26,10 +26,10 @@ public class PSEOptimise {
         this.poidMax = sacADos.getPoidsSacMax();
         this.borneSup = sacADos.getSommeValeurTousObjets();
         this.borneInf = sacADos.getSommeValeurGlotonne();
-        System.out.println("PoidMax = " + poidMax);
+
         System.out.println("Borne inférieur "+this.borneInf);
-        System.out.println("Borne Supérieur " + this.borneSup);
-        System.out.println(sacADos.toStringAllObjets());
+        System.out.println("Borne Supérieur " + this.borneSup + "\n");
+
         SearchTree root = new SearchTree();
         // créer la raçine de l'arbre
 

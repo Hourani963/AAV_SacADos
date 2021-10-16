@@ -1,10 +1,7 @@
 package Objets;
 
 
-import Algos.PSE;
-import Algos.ProgDyn;
-import Algos.Gloutonne;
-import Algos.objetsSorter;
+import Algos.*;
 import File.FileOperations;
 import Objets.Objet;
 
@@ -140,7 +137,7 @@ public class SacADos {
     }
 
     public void resoudrePSE(){
-        PSE pse = new PSE(this, objetsTous);
-        pse.resoudre();
+        PSEOptimise p = new PSEOptimise(this, objetsTous);
+        p.resoudre();
     }
 }
