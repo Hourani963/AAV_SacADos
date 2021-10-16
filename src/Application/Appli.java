@@ -25,7 +25,7 @@ public class Appli {
                 sac.analyseFile();
                 long startTime = System.currentTimeMillis();
                 switch (parts[3]){
-                    case "gloutonne," :
+                    case "gloutonne" :
                         System.out.println("Méthode -> gloutonne"); sac.resoudreGloutonne(); n=false;
                         break;
                     case "dyn" :
