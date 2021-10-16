@@ -25,7 +25,8 @@ public class PSE {
         for(Objet o : this.objets)
             maxVal += o.getValeur();
 
-
+        sac.resoudreGloutonne();
+        minVal = sac.getVsac();
         System.out.println("Borne inférieur "+minVal);
         System.out.println("Borne Supérieur " + maxVal);
         ABR root = new ABR();

@@ -49,10 +49,9 @@ public class SacADos {
         return this.VmaxPSE;
     }
     public float getSommeValeurGlotonne(){ // borne inférieur pour l'algo PSE
-        resoudreGloutonne();
-        this.VminPSE = this.Vsac;
-        viderSac();
-        return this.VminPSE;
+        this.resoudreGloutonne();
+        System.out.println("sssss"+ Vsac);
+        return Vsac;
     }
 
 
@@ -131,18 +130,21 @@ public class SacADos {
     }
 
     public void resoudreGloutonne(){ // résoudre le problème de remplissage
+
         Gloutonne glo = new Gloutonne(objetsTous, this);
         objetsTous.sort(new objetsSorter());
         glo.selection();
     }
 
     public void resoudreProgDynam(){
+
         ProgDyn progDyn = new ProgDyn(this,objetsTous);
         progDyn.resoudre();
     }
 
     public void resoudrePSE(){
-        //PSE pse = new PSE(this, objetsTous);
+
+
         PSEOptimisé pse = new PSEOptimisé(this, objetsTous);
         PSE p = new PSE(this, objetsTous);
         //p.resoudre();

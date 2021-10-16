@@ -33,7 +33,7 @@ public class SearchTree {
     }
 
     public void setLeftSon(Objet o , int index){
-        this.leftSon = new SearchTree(this , o.getValeur(), o.getPoid() , index);
+        this.leftSon = new SearchTree(this , this.valeur + o.getValeur(),this.poids+ o.getPoid() , index);
     }
     public void setRightSon(){
         this.rightSon = new SearchTree(this , this.valeur , this.poids , -1);

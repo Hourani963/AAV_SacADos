@@ -11,7 +11,7 @@ public class PSEOptimisé {
     private float borneSup;
 
     private float poidMax;
-    private SearchTree rootTree;
+
     private SearchTree bestSolutionTree;
 
     private ArrayList<Objet> objets;
@@ -20,14 +20,13 @@ public class PSEOptimisé {
     public PSEOptimisé(SacADos sacADos , ArrayList<Objet> objet){
         this.sacADos = sacADos;
         this.objets = objet;
-
     }
 
     public void resoudre(){
         this.poidMax = sacADos.getPoidsSacMax();
         this.borneSup = sacADos.getSommeValeurTousObjets();
         this.borneInf = sacADos.getSommeValeurGlotonne();
-
+        System.out.println("PoidMax = " + poidMax);
         System.out.println("Borne inférieur "+this.borneInf);
         System.out.println("Borne Supérieur " + this.borneSup);
 

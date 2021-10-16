@@ -10,11 +10,11 @@ public class Appli {
         //String chemin = "C:\\\\Users\\\\Ugarit\\\\Desktop\\\\AAV\\\\AAV_SacADos\\\\text\\\\items.txt";
         SacADos sac = new SacADos(chemin, 5);
 
+
         sac.analyseFile();
 
-        System.out.println(sac.getNbrObjetSac());
-        sac.resoudreGloutonne();
-        //sac.resoudrePSE();
+        //sac.resoudreGloutonne();
+        sac.resoudrePSE();
 
         System.out.println("Valeurs = " + sac.getVsac());
         System.out.println("Poid = " + sac.getPsac());
