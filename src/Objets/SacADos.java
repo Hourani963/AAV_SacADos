@@ -34,7 +34,17 @@ public class SacADos {
         this.Psac = 0;
         this.Vsac = 0;
     }
-
+    public float getSommeValeurTousObjets(){
+        float VmaxPSE = 0;
+        for (Objet o: objetsTous) {
+            VmaxPSE += o.getValeur();
+        }
+        return VmaxPSE;
+    }
+    public float getSommeValeurGlotonne(){ // borne inférieur pour l'algo PSE
+        this.resoudreGloutonne();
+        return Vsac;
+    }
     public int getNbrObjetSac(){
         return objetsDansSac.size();
     }
