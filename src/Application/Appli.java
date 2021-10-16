@@ -8,7 +8,7 @@ public class Appli {
         String chemin = "C:\\\\Users\\\\UGARIT\\\\Desktop\\\\GIt\\\\AAV_SacADos\\\\text\\\\items.txt";
         //String chemin = args[1];
         //String chemin = "C:\\\\Users\\\\Ugarit\\\\Desktop\\\\AAV\\\\AAV_SacADos\\\\text\\\\items.txt";
-        SacADos sac = new SacADos(chemin, 5);
+        SacADos sac = new SacADos(chemin, 4);
 
 
         sac.analyseFile();
