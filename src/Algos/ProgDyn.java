@@ -16,14 +16,14 @@ public class ProgDyn {
     public void resoudre(){
         int nbrObjets = objets.size();
         int poidSacMax = (int)(sac.getPoidsSacMax());
-        int[][] Matrix = new int[nbrObjets][poidSacMax + 1];
+        float[][] Matrix = new float[nbrObjets][poidSacMax + 1];
 
 
         for (int j = 0; j <= poidSacMax; j++) {
             if (objets.get(0).getPoid() > j)
                 Matrix[0][j] = 0;
             else
-                Matrix[0][j] = (int) objets.get(0).getValeur();
+                Matrix[0][j] = objets.get(0).getValeur();
         }
 
 
@@ -32,8 +32,8 @@ public class ProgDyn {
                 if(objets.get(i).getPoid()  > j)
                     Matrix[i][j] = Matrix[i - 1][j];
                 else
-                    Matrix[i][j] = (int) Math.max(Matrix[i - 1][j],
-                            (Matrix[i-1][(int)((j - (objets.get(i).getPoid() )))]
+                    Matrix[i][j] =Math.max(Matrix[i - 1][j],
+                            (Matrix[i-1][(int) ( j - (objets.get(i).getPoid() ))]
                                     + objets.get(i).getValeur()));
         }
 
@@ -49,8 +49,9 @@ public class ProgDyn {
             while (i > 0 && Matrix[i][j] == Matrix[i - 1][j]){
                 --i;
             }
-            test = test - objets.get(i).getPoid();
 
+            test = test - objets.get(i).getPoid();
+            j = j - (int) objets.get(i).getPoid();
             if (test >= 0 )
                 sac.setObjets(objets.get(i));
             else break;
