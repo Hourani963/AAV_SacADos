@@ -50,6 +50,7 @@ public class Objet {
     }
 
     public String toString(){
-        return nom + " | " + poid + " | " + valeur + " | " + estDansLeSac +"\n";
+        return nom + " | " + poid + " | " + valeur + " | " +
+                "-> rapport = "+getV_p() +"\n";
     }
 }

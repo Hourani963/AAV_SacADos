@@ -130,7 +130,6 @@ public class SacADos {
     }
 
     public void resoudreGloutonne(){ // résoudre le problème de remplissage
-
         Gloutonne glo = new Gloutonne(objetsTous, this);
         objetsTous.sort(new objetsSorter());
         glo.selection();
