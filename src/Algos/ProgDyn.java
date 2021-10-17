@@ -39,7 +39,7 @@ public class ProgDyn {
 
         int i = nbrObjets - 1;
         int j = poidSacMax;
-        float test = poidSacMax;
+        float jFloat = poidSacMax;
 
         while(Matrix[i][j] == Matrix[i][j-1]){
             --j;
@@ -49,10 +49,10 @@ public class ProgDyn {
             while (i > 0 && Matrix[i][j] == Matrix[i - 1][j]){
                 --i;
             }
-
-            test = test - objets.get(i).getPoid();
+            if(i<0) break;
+            jFloat = jFloat - objets.get(i).getPoid();
             j = j - (int) objets.get(i).getPoid();
-            if (test >= 0 )
+            if (jFloat >= 0 )
                 sac.setObjets(objets.get(i));
             else break;
             --i;
