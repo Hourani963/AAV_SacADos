@@ -25,8 +25,9 @@ public class PSEOptimise {
     public void resoudre(){
         this.poidMax = sacADos.getPoidsSacMax();
         this.borneSup = sacADos.getSommeValeurTousObjets();
-        this.borneInf = sacADos.getSommeValeurGlotonne();
-        if(sacADos.getPsac() != poidMax){
+        //this.borneInf = sacADos.getSommeValeurGlotonne();
+        this.borneInf = (float) 6.6;
+        if(borneSup != sacADos.getVsac()){
             System.out.println("Borne inférieur "+this.borneInf);
             System.out.println("Borne Supérieur " + this.borneSup + "\n");
 
@@ -34,6 +35,7 @@ public class PSEOptimise {
             // créer la raçine de l'arbre
 
             this.bestSolutionTree = root;
+
             creeArbreRec(0, root, borneSup);
 
             sacADos.viderSac();
@@ -72,7 +74,7 @@ public class PSEOptimise {
     private void ajouterSolutionRec(SearchTree noeudGagnant) {
         int i;
 
-        if((i = noeudGagnant.getIndexObjet()) != -1 && this.objets.get(i).getPoid()+sacADos.getPsac() <+ sacADos.getPoidsSacMax()) {
+        if((i = noeudGagnant.getIndexObjet()) != -1 && this.objets.get(i).getPoid() + sacADos.getPsac() <= poidMax) {
             sacADos.setObjets(this.objets.get(i));
         }
 
@@ -80,5 +82,4 @@ public class PSEOptimise {
             ajouterSolutionRec(noeudGagnant.getFather());
         }
     }
-
 }
