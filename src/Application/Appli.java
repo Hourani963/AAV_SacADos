@@ -50,10 +50,9 @@ public class Appli {
             }
             else if(parts[0].equals("exit")) n = false;
 
-            else System.out.println("il faut écrire [resoudre-sac-a-dos]" +
-                    "[chemin]"+ "[chemin]" + "[poids-maximal]" + "[methode]"+
+            else System.out.println("il faut écrire [resoudre]"
+                        + "[chemin]" + "[poids-maximal]" + "[methode(gloutonne, dyn, pse)]"+
                     "===> write [exit] to stop the program");
         }
-
     }
 }
