@@ -5,7 +5,7 @@ import Objets.SacADos;
 
 import java.util.ArrayList;
 
-public class ProgDyn {
+public class ProgDyn implements AlgosMethodes{
     private ArrayList<Objet> objets;
     SacADos sac = new SacADos();
     public ProgDyn(SacADos sac,ArrayList<Objet> objet){
@@ -13,12 +13,15 @@ public class ProgDyn {
         objets = objet;
     }
 
+    /**
+     * résolution de la programmation dynamique
+     */
     public void resoudre(){
         int nbrObjets = objets.size();
         int poidSacMax = (int)(sac.getPoidsSacMax());
         float[][] Matrix = new float[nbrObjets][poidSacMax + 1];
 
-
+        // construire la premièer ligne de matrice
         for (int j = 0; j <= poidSacMax; j++) {
             if (objets.get(0).getPoid() > j)
                 Matrix[0][j] = 0;
@@ -26,7 +29,7 @@ public class ProgDyn {
                 Matrix[0][j] = objets.get(0).getValeur();
         }
 
-
+        // construire le reste de la matrice
         for(int i = 1; i < nbrObjets; ++i) {
             for (int j = 0; j <= poidSacMax; ++j)
                 if(objets.get(i).getPoid()  > j)
@@ -37,6 +40,7 @@ public class ProgDyn {
                                     + objets.get(i).getValeur()));
         }
 
+        // choisire les objet à partir de la matrice
         int i = nbrObjets - 1;
         int j = poidSacMax;
         float jFloat = poidSacMax;

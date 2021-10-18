@@ -17,13 +17,10 @@ public class SacADos {
     private ArrayList<Objet> objetsTous;
     private ArrayList<Objet> objetsDansSac;
 
-    public int getObjetsTous(){
-        return objetsTous.size();
-    }
-    public double getObjetValByIndice(int indice){
-        return objetsDansSac.get(indice).getValeur();
-    }
-    public SacADos(){ // constructeur vide
+    /**
+     * Constructiur du sac vide
+     */
+    public SacADos(){ // constructeur sac vide
         this.chemin = "";
         this.poidsSacMax = 0;
         this.objetsTous = new ArrayList<>();
@@ -31,26 +28,13 @@ public class SacADos {
         this.Psac = 0;
         this.Vsac = 0;
     }
-    public float getSommeValeurTousObjets(){
-        float VmaxPSE = 0;
-        for (Objet o: objetsTous) {
-            VmaxPSE += o.getValeur();
-        }
-        return VmaxPSE;
-    }
-    public float getSommeValeurGlotonne(){ // borne inférieur pour l'algo PSE
-        this.resoudreGloutonne();
-        return Vsac;
-    }
-    public int getNbrObjetSac(){
-        return objetsDansSac.size();
-    }
-    public void viderSac(){
-        this.Psac = 0 ;
-        this.Vsac = 0;
-        this.objetsDansSac.clear();
-    }
-    public SacADos(String chemin ,float poidsSacMax){ // constructeur où chemin est l'adresse du fichier contenant les Objets
+
+    /**
+     * Constructeur du sac
+     * @param chemin : chemin du fichier du text
+     * @param poidsSacMax : poid maximim du sac
+     */
+    public SacADos(String chemin ,float poidsSacMax){
         this.chemin = chemin;
         this.poidsSacMax = poidsSacMax;
         this.objetsTous = new ArrayList<>();
@@ -58,46 +42,113 @@ public class SacADos {
         this.Psac = 0;
         this.Vsac = 0;
     }
-    public void setChemin(String chemin){
-        this.chemin = chemin;
+
+    /**
+     * Obtenir le nombre de tous les objet dans le fichier txt
+     * @return nombre des objets
+     */
+    public int getObjetsTous(){
+        return objetsTous.size();
     }
 
+    /**
+     * Obtenir l'objet da l'indice donnée dans le arraylist objetTous
+     * @param indice : indice de l'objet
+     * @return valeur de l'objet
+     */
+    public double getObjetValByIndice(int indice){
+        return objetsDansSac.get(indice).getValeur();
+    }
+
+    /**
+     * Obtenir la somme des valeur de tous les objets pour la borneSupérieur dans la PSE
+     * @return VmaxPSE
+     */
+    public float getSommeValeurTousObjets(){
+        float VmaxPSE = 0;
+        for (Objet o: objetsTous) {
+            VmaxPSE += o.getValeur();
+        }
+        return VmaxPSE;
+    }
+
+    /**
+     * On peut utiliser cette fonction dans l'algo PSE pour fixé une borne Inférieur avant de résoudre PSE
+     * @return Vsac : représent la borne inférieur (somme des valeur des objet dans le sac) résolut par Gloutonne
+     */
+    public float getSommeValeurGlotonne(){ // borne inférieur pour l'algo PSE
+        this.resoudreGloutonne();
+        return Vsac;
+    }
+
+    /**
+     * obtenir le nombre des objets dans le sac
+     * @return nombre d'objet
+     */
+    public int getNbrObjetSac(){
+        return objetsDansSac.size();
+    }
+
+    /**
+     * Vider le sac
+     */
+    public void viderSac(){
+        this.Psac = 0 ;
+        this.Vsac = 0;
+        this.objetsDansSac.clear();
+    }
+
+
+    /**
+     * obtenir le poid maximum de sac " la valeur qu'on a choisi au début de program
+     * @return poids maximum du sac qu'on a fixé au début de program
+     */
     public float getPoidsSacMax(){
         return poidsSacMax;
     }
-    public void setPoidsSacMax(float poidsSacMax){
-        this.poidsSacMax = poidsSacMax;
-    }
 
+    /**
+     * obtenir la valeur de sac actuelle après l'ajout des objet
+     * @return Vsac : la valeur
+     */
     public float getVsac() {
         return Vsac;
     }
 
-    public void setVsac(float vsac) {
-        Vsac = vsac;
-    }
 
+    /**
+     * obtenir le poid de sac actuelle après l'ajout des objets
+     * @return Psac : le poid
+     */
     public float getPsac() {
         return Psac;
     }
 
-    public void setPsac(float Psac) {
-        Psac = Psac;
-    }
 
-    public void setObjets(Objet objet){ // dernière étape
+    /**
+    * ajouter l'objet dans le sac
+    * @param objet : c'est l'objet qu'on va ajouter dans le sac
+     */
+    public void setObjets(Objet objet){
         objetsDansSac.add(objet);
         objet.isDansLeSac();
         Vsac += objet.getValeur();
         Psac += objet.getPoid();
 
     }
+
+    /**
+    * ajouter l'objet dans la list objetTous, ce n'est pas ajouter l'objet dans le sac
+    * @param objet : c'est l'objet qu'on va ajouter dans la list objetTous
+     */
     public void addObjet(Objet objet){ // ajouter l'objet à la liste d'objet et non pas dans le sac
         this.objetsTous.add(objet);
     }
-    public Objet getObjet(Objet objet){
-        return objet;
-    }
+
+    /**
+     * Afficher la liste d'objet contenant dans le sac
+     * @return s : String contenant les objets
+     */
     public String toString(){
         String s = "";
         for (Objet objet:objetsDansSac) {
@@ -105,6 +156,11 @@ public class SacADos {
         }
         return s;
     }
+
+    /**
+     * Afficher tous les objets dans la liste objetTous, ce ne sont pas les objets dans le sac
+     * @return s : string contenant la list d'objet
+     */
     public String toStringAllObjets(){
         String s = "";
         for (Objet objet: objetsTous) {
@@ -113,6 +169,9 @@ public class SacADos {
         return s;
     }
 
+    /**
+     * Ajouter la liste d'items (nom, poid et valeur) dans un ARRAYLIST [objetsTous]
+     */
     public void analyseFile(){
         FileOperations file = new FileOperations(chemin);
         List list = file.readFile(chemin);
@@ -125,17 +184,25 @@ public class SacADos {
         }
     }
 
+    /**
+     * Résoudre le problème en utilisant la méthode Gloutonne
+     */
     public void resoudreGloutonne(){ // résoudre le problème de remplissage
         Gloutonne glo = new Gloutonne(objetsTous, this);
-        objetsTous.sort(new objetsSorter());
-        glo.selection();
+        glo.resoudre();
     }
 
+    /**
+     * Résoudre le problème en utilisant la méthode ProgrammationDynamique
+     */
     public void resoudreProgDynam(){
         ProgDyn progDyn = new ProgDyn(this,objetsTous);
         progDyn.resoudre();
     }
 
+    /**
+     * Résoudre le problème en utilisant la méthode PSE
+     */
     public void resoudrePSE(){
         PSEOptimise p = new PSEOptimise(this, objetsTous);
         p.resoudre();

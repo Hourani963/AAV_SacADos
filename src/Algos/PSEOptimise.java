@@ -5,7 +5,7 @@ import Objets.SacADos;
 
 import java.util.ArrayList;
 
-public class PSEOptimise {
+public class PSEOptimise implements AlgosMethodes {
 
     private float borneInf;
     private float borneSup;
@@ -17,11 +17,19 @@ public class PSEOptimise {
     private ArrayList<Objet> objets;
     private SacADos sacADos;
 
+    /**
+     * Constructeur de la classe avec le sac et tous les objets
+     * @param sacADos le sac
+     * @param objet une liste de tous les objets
+     */
     public PSEOptimise(SacADos sacADos , ArrayList<Objet> objet){
         this.sacADos = sacADos;
         this.objets = objet;
     }
 
+    /**
+     * résolution de l'Algo
+     */
     public void resoudre(){
         this.poidMax = sacADos.getPoidsSacMax();
         this.borneSup = sacADos.getSommeValeurTousObjets();
@@ -46,6 +54,12 @@ public class PSEOptimise {
 
     }
 
+    /**
+     * Création de l'arbre binaire des solutions possible
+     * @param index index de l'objet
+     * @param noeudActuel noeud actuel
+     * @param maxPossible la borne supérieur du noued actuel
+     */
     private void creeArbreRec(int index, SearchTree noeudActuel, double maxPossible) {
 
         noeudActuel.setLeftSon(this.objets.get(index), index);
@@ -70,6 +84,10 @@ public class PSEOptimise {
         }
     }
 
+    /**
+     * Ajouter les objets de la solution trouvé en rementant dans l'arbre de bestNoeud ver la racine
+     * @param noeudGagnant le noued qui possède les meuilleur résultat
+     */
     private void ajouterSolutionRec(SearchTree noeudGagnant) {
         int i;
 
