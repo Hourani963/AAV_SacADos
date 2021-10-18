@@ -25,8 +25,9 @@ public class PSEOptimise {
     public void resoudre(){
         this.poidMax = sacADos.getPoidsSacMax();
         this.borneSup = sacADos.getSommeValeurTousObjets();
-        this.borneInf = sacADos.getSommeValeurGlotonne();
+        this.borneInf = 0;
         if(borneSup != sacADos.getVsac()){
+            System.out.println("Initialisation des bornes :");
             System.out.println("Borne inférieur "+this.borneInf);
             System.out.println("Borne Supérieur " + this.borneSup + "\n");
 

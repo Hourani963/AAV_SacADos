@@ -7,24 +7,22 @@ import java.util.Scanner;
 public class Appli {
 
     public static void main(String[] args) {
-
-
-
+        System.out.println(args[0]);
         boolean n = true;
         while (n){
-            System.out.printf("> ");
-            Scanner sc = new Scanner(System.in);
-            String ligne = sc.nextLine();
+            //System.out.printf("> ");
+            //Scanner sc = new Scanner(System.in);
+            //String ligne = sc.nextLine();
 
-            String[] parts = ligne.split(" ");
-            if (parts[0].equals("resoudre") ) {
-                float poid = Float.parseFloat(parts[2]);
+            //String[] parts = ligne.split(" ");
+            if (args[0].equals("resoudre") ) {
+                float poid = Float.parseFloat(args[2]);
                 //String chemin = "C:\\Users\\UGARIT\\Desktop\\GIT\\AAV_SacADos\\text\\items.txt";
 
-                SacADos sac = new SacADos("text\\"+parts[1]+".txt", poid);
+                SacADos sac = new SacADos("text\\"+args[1]+".txt", poid);
                 sac.analyseFile();
                 long startTime = System.currentTimeMillis();
-                switch (parts[3]){
+                switch (args[3]){
                     case "gloutonne" :
                         System.out.println("Méthode -> gloutonne"); sac.resoudreGloutonne(); n=false;
                         break;
@@ -48,7 +46,7 @@ public class Appli {
 
                 System.out.println("Temps d'exe " + totalTime + "ms");
             }
-            else if(parts[0].equals("exit")) n = false;
+            else if(args[0].equals("exit")) n = false;
 
             else System.out.println("il faut écrire [resoudre]"
                         + "[chemin]" + "[poids-maximal]" + "[methode(gloutonne, dyn, pse)]"+

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="AAV_SacADos:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/AAV_SacADos_jar</output-path>
+    <root id="archive" name="AAV_SacADos.jar">
+      <element id="module-output" name="AAV_SacADos" />
+    </root>
+  </artifact>
+</component>
