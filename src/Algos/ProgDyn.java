@@ -17,6 +17,8 @@ public class ProgDyn implements AlgosMethodes{
      * résolution de la programmation dynamique
      */
     public void resoudre(){
+        // pour la précision on multiplie le poid du sac et le poid de chaque objet par 10 et à la fin de l'algo on dévise par 10
+        // la multiplication se fait pour la présion du calcule, calculer le flout.
         for (Objet o: objets) {
             o.setPoid(o.getPoid()*10);
         }
@@ -67,7 +69,7 @@ public class ProgDyn implements AlgosMethodes{
             --i;
             if(i<0) break;
         }
-
+        // on dévise le poid de sacMax, poid de sac et poid de tous les objets par 10 pour revenir au poid normal
         for (Objet o: objets) {
             o.setPoid(o.getPoid()/10);
         }

@@ -43,9 +43,18 @@ public class SacADos {
         this.Vsac = 0;
     }
 
+    /**
+     * set le poid du sac
+     * @param poid : le poid
+     */
     public void setPoid(float poid){
         this.Psac = poid;
     }
+
+    /**
+     * set le poidMax du sac
+     * @param p : le poid
+     */
     public void setPoidsSacMax(float p){
         this.poidsSacMax = p;
     }

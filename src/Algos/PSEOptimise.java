@@ -33,7 +33,9 @@ public class PSEOptimise implements AlgosMethodes {
     public void resoudre(){
         this.poidMax = sacADos.getPoidsSacMax();
         this.borneSup = sacADos.getSommeValeurTousObjets();
-        this.borneInf = 0; //sacADos.getSommeValeurGlotonne();
+        // soit on fait l'algo Gloutonne pour choisir la borne inférieur, soit on choisie 0 simplement
+        //this.borneInf =sacADos.getSommeValeurGlotonne();
+        this.borneInf = 0; //
         if(borneSup != sacADos.getVsac()){
             System.out.println("Borne inférieur "+this.borneInf);
             System.out.println("Borne Supérieur " + this.borneSup + "\n");
