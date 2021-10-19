@@ -43,6 +43,12 @@ public class SacADos {
         this.Vsac = 0;
     }
 
+    public void setPoid(float poid){
+        this.Psac = poid;
+    }
+    public void setPoidsSacMax(float p){
+        this.poidsSacMax = p;
+    }
     /**
      * Obtenir le nombre de tous les objet dans le fichier txt
      * @return nombre des objets

@@ -17,6 +17,11 @@ public class ProgDyn implements AlgosMethodes{
      * résolution de la programmation dynamique
      */
     public void resoudre(){
+        for (Objet o: objets) {
+            o.setPoid(o.getPoid()*10);
+        }
+        sac.setPoidsSacMax(sac.getPoidsSacMax()*10);
+
         int nbrObjets = objets.size();
         int poidSacMax = (int)(sac.getPoidsSacMax());
         float[][] Matrix = new float[nbrObjets][poidSacMax + 1];
@@ -53,13 +58,20 @@ public class ProgDyn implements AlgosMethodes{
             while (i > 0 && Matrix[i][j] == Matrix[i - 1][j]){
                 --i;
             }
-            if(i<0) break;
+
             jFloat = jFloat - objets.get(i).getPoid();
             j = j - (int) objets.get(i).getPoid();
             if (jFloat >= 0 )
                 sac.setObjets(objets.get(i));
             else break;
             --i;
+            if(i<0) break;
         }
+
+        for (Objet o: objets) {
+            o.setPoid(o.getPoid()/10);
+        }
+        sac.setPoidsSacMax(sac.getPoidsSacMax()/10);
+        sac.setPoid(sac.getPsac()/10);
     }
 }
